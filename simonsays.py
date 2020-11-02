@@ -1,6 +1,6 @@
 numberOfCommands = int(input())
 
 for _ in range(numberOfCommands):
-    words = input().split()
-    if words[0] == "Simon" and words[1] == "says":
-        print(' '.join(words[2:]))
+    line = input()
+    if "Simon says" in line:
+        print(line[11:])
