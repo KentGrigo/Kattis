@@ -6,8 +6,6 @@ while True:
         line = input()
     except EOFError:
         break
-    if line == "":
-        break
 
     timestamp = line.split()
     date = " ".join(timestamp[0:3])
