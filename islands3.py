@@ -1,12 +1,3 @@
-mapSize = input().split()
-height = int(mapSize[0])
-width = int(mapSize[1])
-
-map = []
-for _ in range(height):
-    row = list(input())
-    map.append(row)
-
 def isWithinBounds(map, x, y):
     return 0 <= x and x < width and 0 <= y and y < height
 
@@ -41,5 +32,15 @@ def normalize(map):
                 normalizeLand(map, x, y, islandNumber)
 
     print(islandNumber)
+
+
+mapSize = input().split()
+height = int(mapSize[0])
+width = int(mapSize[1])
+
+map = []
+for _ in range(height):
+    row = list(input())
+    map.append(row)
 
 normalize(map)
