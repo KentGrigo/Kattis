@@ -10,6 +10,23 @@ def setEntry(rows, rowNumber, columnNumber, newValue):
     else:
         raise Exception("Not valid coordinates ({}, {}) for {}".format(rowNumber, columnNumber, rows))
 
+def computeNumberOfHandshakes(rows, rowNumber, columnNumber):
+    numberOfHandshakes = 0
+    for relativeNeighborRowNumber in range(-1, 2):
+        for relativeNeighborColumnNumber in range(-1, 2):
+            if relativeNeighborRowNumber == 0 and relativeNeighborColumnNumber == 0:
+                continue
+
+            neighborRowNumber = rowNumber + relativeNeighborRowNumber
+            neighborColumnNumber = columnNumber + relativeNeighborColumnNumber
+            neighborEntry = getEntry(rows, neighborRowNumber, neighborColumnNumber)
+            if neighborEntry != "o":
+                continue
+
+            numberOfHandshakes += 1
+    
+    return numberOfHandshakes
+
 
 size = input().split()
 numberOfRows = int(size[0])
@@ -20,7 +37,7 @@ for _ in range(numberOfRows):
     row = list(input())
     rows.append(row)
 
-
+# Find seat for Mirko
 rowNumberOfMirko = None
 columnNumberOfMirko = None
 maxNumberOfHandshakes = 0
@@ -30,28 +47,16 @@ for rowNumber in range(numberOfRows):
         if entry != ".":
             continue
 
-        numberOfHandshakes = 0
-        for relativeNeighborRowNumber in range(-1, 2):
-            for relativeNeighborColumnNumber in range(-1, 2):
-                if relativeNeighborRowNumber == 0 and relativeNeighborColumnNumber == 0:
-                    continue
-
-                neighborRowNumber = rowNumber + relativeNeighborRowNumber
-                neighborColumnNumber = columnNumber + relativeNeighborColumnNumber
-                neighborEntry = getEntry(rows, neighborRowNumber, neighborColumnNumber)
-                if neighborEntry != "o":
-                    continue
-
-                numberOfHandshakes += 1
-                if maxNumberOfHandshakes < numberOfHandshakes:
-                    maxNumberOfHandshakes = numberOfHandshakes
-                    rowNumberOfMirko = rowNumber
-                    columnNumberOfMirko = columnNumber
+        numberOfHandshakes = computeNumberOfHandshakes(rows, rowNumber, columnNumber)
+        if maxNumberOfHandshakes < numberOfHandshakes:
+            maxNumberOfHandshakes = numberOfHandshakes
+            rowNumberOfMirko = rowNumber
+            columnNumberOfMirko = columnNumber
 
 if rowNumberOfMirko != None and columnNumberOfMirko != None:
     setEntry(rows, rowNumberOfMirko, columnNumberOfMirko, "o")
 
-
+# Compute total number of seats
 totalNumberOfHandshakes = 0
 for rowNumber in range(numberOfRows):
     for columnNumber in range(numberOfColumns):
@@ -59,17 +64,6 @@ for rowNumber in range(numberOfRows):
         if entry != "o":
             continue
 
-        for relativeNeighborRowNumber in range(-1, 2):
-            for relativeNeighborColumnNumber in range(-1, 2):
-                if relativeNeighborRowNumber == 0 and relativeNeighborColumnNumber == 0:
-                    continue
-
-                neighborRowNumber = rowNumber + relativeNeighborRowNumber
-                neighborColumnNumber = columnNumber + relativeNeighborColumnNumber
-                neighborEntry = getEntry(rows, neighborRowNumber, neighborColumnNumber)
-                if neighborEntry != "o":
-                    continue
-
-                totalNumberOfHandshakes += 1
+        totalNumberOfHandshakes += computeNumberOfHandshakes(rows, rowNumber, columnNumber)
 
 print(totalNumberOfHandshakes // 2)
