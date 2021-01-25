@@ -21,16 +21,22 @@ https://open.kattis.com/problems/hello
 ## How to run?
 All these solution are solved with Python 3.6+.
 You can run the solutions by passing the solution file to Python in a terminal like this:
+```console
 > python hello.py
+```
 
 Most solutions need input.
 To provide the input, run the solution like before and paste the data into the buffer like this:
+```console
 > python bestcompression.py
 13 3
+```
 
 You can also store the data in a file and redirect it to the program.
-With a file called bestcompression-data.py containing "13 3", you can do it like this:
+With a file named bestcompression-data.py containing "13 3", you can do it like this:
+```console
 > python bestcompression.py < bestcompression-data.py
+```
 
 
 ## Support of Python 2
