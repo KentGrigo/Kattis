@@ -33,9 +33,9 @@ def hasUniqueShape(tree, shapes):
     return True
 
 
-numberOPrototypes, numberOfLayers = list(map(int, input().split()))
+numberOfPrototypes, numberOfLayers = list(map(int, input().split()))
 uniqueShapes = []
-for _ in range(numberOPrototypes):
+for _ in range(numberOfPrototypes):
     layers = list(map(int, input().split()))
     root = BinaryTree(layers[0])
     for layer in layers[1:]:
