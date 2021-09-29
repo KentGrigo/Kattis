@@ -27,9 +27,3 @@ while True:
         population.evolve()
 
     print(population.numberOfMosquitoes)
-
-# 1 9 0
-
-# 8 55 144
-# 0 8 6
-# 0 0 0
