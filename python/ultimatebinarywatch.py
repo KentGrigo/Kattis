@@ -1,11 +1,12 @@
 ciphers = map(int, list(input()))
 binaries = list(map(lambda cipher: '{0:04b}'.format(cipher), ciphers))
 for column in range(4):
+    output = ''
     for index, binary in enumerate(binaries):
         if index == 2:
-            print('   ', end='')
+            output += '   '
         elif index != 0:
-            print(' ', end='')
+            output += ' '
 
         bit = binary[column]
         if bit == '1':
@@ -13,6 +14,6 @@ for column in range(4):
         else:
             symbol = '.'
 
-        print(symbol, end='')
+        output += symbol
 
-    print()
+    print(output)
