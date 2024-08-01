@@ -1,0 +1,2 @@
+bergursCode = input()
+print(bergursCode)
