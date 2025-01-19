@@ -1,0 +1,6 @@
+numberOfCarbonAtoms = int(input())
+print("  " + "H " * numberOfCarbonAtoms)
+print("  " + "| " * numberOfCarbonAtoms)
+print("H-" + "C-" * numberOfCarbonAtoms + "OH")
+print("  " + "| " * numberOfCarbonAtoms)
+print("  " + "H " * numberOfCarbonAtoms)
