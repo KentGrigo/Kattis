@@ -1,0 +1,5 @@
+_ = input()
+temperatures = list(map(int, input().split()))
+minTemperature = min(temperatures)
+maxTemperature = max(temperatures)
+print(f'{maxTemperature} {minTemperature}')
