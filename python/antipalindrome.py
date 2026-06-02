@@ -1,21 +1,19 @@
 def checkPart(text, leftIndex, rightIndex):
-    width = rightIndex - leftIndex
-    for offset in range(width):
-        leftCharacter = text[leftIndex + offset]
-        rightCharacter = text[rightIndex - offset]
-        if leftCharacter != rightCharacter:
-            return False
-        
+    leftCharacter = text[leftIndex]
+    rightCharacter = text[rightIndex]
+    if leftCharacter != rightCharacter:
+        return False
+    
     return True
 
 def check(text):
-    for leftIndex in range(textLength):
-        for rightIndex in range(leftIndex + 1, textLength):
-            result = checkPart(text, leftIndex, rightIndex)
-            if result:
-                return True
-    
-    return False
+    for leftIndex in range(textLength - 2):
+        result1 = checkPart(text, leftIndex, leftIndex + 1)
+        result2 = checkPart(text, leftIndex, leftIndex + 2)
+        if result1 or result2:
+            return True
+
+    return checkPart(text, -2, -1)
 
 
 text = input().replace(' ', '').lower()
