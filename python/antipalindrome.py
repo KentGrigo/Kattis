@@ -25,5 +25,3 @@ if isPalindrome:
     print("Palindrome")
 else:
     print("Anti-palindrome")
-
-            
