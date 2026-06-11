@@ -8,7 +8,7 @@ timeInSeconds = int(input())
 lowerBound = 0
 upperBound = 189481 * timeInSeconds
 while lowerBound + 1 < upperBound:
-    estimate = int(lowerBound + (upperBound - lowerBound) / 2)
+    estimate = lowerBound + (upperBound - lowerBound) // 2
     actualTimeInSeconds = computerTime(estimate)
     if timeInSeconds < actualTimeInSeconds:
         upperBound = estimate
